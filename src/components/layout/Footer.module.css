@@ -1,0 +1,115 @@
+.footer {
+    background: var(--color-metallic-dark);
+    color: var(--color-text-inverted);
+    padding: var(--spacing-lg) 0 var(--spacing-md);
+    margin-top: auto;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-sm);
+}
+
+.topSection {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-lg);
+}
+
+@media (min-width: 768px) {
+    .topSection {
+        grid-template-columns: 2fr 1fr 1fr;
+    }
+}
+
+.brandCol {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.logoRow {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+}
+
+.logo {
+    height: 32px;
+    width: auto;
+    filter: brightness(0) invert(1);
+}
+
+.brandName {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 1.5rem;
+}
+
+.tagline {
+    color: var(--color-metallic-gray);
+    max-width: 300px;
+    font-size: 0.9rem;
+}
+
+.linksCol,
+.contactCol {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.linksCol h4,
+.contactCol h4 {
+    font-size: 1.1rem;
+    margin-bottom: var(--spacing-xs);
+    color: var(--color-metallic-white);
+}
+
+.linksCol a {
+    color: var(--color-metallic-gray);
+    font-size: 0.95rem;
+    transition: color var(--transition-fast);
+}
+
+.linksCol a:hover {
+    color: var(--color-primary-light);
+    transform: translateX(4px);
+}
+
+.contactLink {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    color: var(--color-metallic-gray);
+}
+
+.contactLink:hover {
+    color: var(--color-primary-light);
+}
+
+.socials {
+    display: flex;
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-xs);
+}
+
+.socials a {
+    color: var(--color-metallic-white);
+    transition: all var(--transition-fast);
+}
+
+.socials a:hover {
+    color: var(--color-primary);
+    transform: translateY(-2px);
+}
+
+.bottomSection {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: var(--spacing-md);
+    text-align: center;
+    color: var(--color-text-muted);
+    font-size: 0.85rem;
+}

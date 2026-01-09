@@ -1,0 +1,114 @@
+.section {
+    padding: var(--spacing-xl) 0;
+    background: var(--color-bg-body);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-sm);
+}
+
+.header {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto var(--spacing-lg);
+}
+
+.sectionTitle {
+    font-size: 2.5rem;
+    color: var(--color-primary-dark);
+    margin-bottom: var(--spacing-sm);
+}
+
+@media (prefers-color-scheme: dark) {
+    .sectionTitle {
+        color: var(--color-text-main);
+    }
+}
+
+.sectionSubtitle {
+    font-size: 1.1rem;
+    color: var(--color-text-muted);
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+}
+
+@media (min-width: 768px) {
+    .grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.card {
+    background: var(--color-bg-surface);
+    border-radius: 12px;
+    padding: var(--spacing-md);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    transition: transform var(--transition-smooth), box-shadow var(--transition-smooth);
+}
+
+@media (prefers-color-scheme: dark) {
+    .card {
+        border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+.iconWrapper {
+    width: 70px;
+    height: 70px;
+    background: var(--color-primary);
+    color: white;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: var(--spacing-sm);
+    box-shadow: 0 4px 10px rgba(0, 71, 171, 0.3);
+}
+
+.cardTitle {
+    font-size: 1.5rem;
+    margin-bottom: var(--spacing-sm);
+    color: var(--color-text-main);
+}
+
+.cardDesc {
+    color: var(--color-text-muted);
+    margin-bottom: var(--spacing-md);
+    line-height: 1.6;
+}
+
+.features {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.8rem;
+}
+
+@media (min-width: 500px) {
+    .features {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.features li {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.95rem;
+    color: var(--color-text-main);
+    font-weight: 500;
+}
+
+.check {
+    color: var(--color-primary);
+}
