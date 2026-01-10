@@ -1,8 +1,51 @@
-import React from 'react';
-import { WhatsappLogo, EnvelopeSimple, MapPin } from 'phosphor-react';
+import React, { useState } from 'react';
+import { WhatsappLogo, EnvelopeSimple, MapPin, PaperPlaneRight, Spinner } from 'phosphor-react';
 import styles from './Contact.module.css';
 
 const Contact = () => {
+    const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+    const [status, setStatus] = useState('idle'); // idle, sending, success, error
+
+    const handleChange = (e) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setStatus('sending');
+
+        const apiUrl = import.meta.env.VITE_API_URL;
+
+        if (!apiUrl || apiUrl.includes('localhost')) {
+            // Simulate sending if no real API is connected
+            setTimeout(() => {
+                console.log('Form Data:', formData);
+                console.log('Target API:', apiUrl);
+                setStatus('success');
+                setFormData({ name: '', email: '', message: '' });
+            }, 1000);
+            return;
+        }
+
+        try {
+            const response = await fetch(apiUrl, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(formData),
+            });
+
+            if (response.ok) {
+                setStatus('success');
+                setFormData({ name: '', email: '', message: '' });
+            } else {
+                setStatus('error');
+            }
+        } catch (error) {
+            console.error('Error sending message:', error);
+            setStatus('error');
+        }
+    };
+
     return (
         <div className={styles.page}>
             <div className={styles.container}>
@@ -38,21 +81,59 @@ const Contact = () => {
                     </div>
 
                     <div className={styles.formCol}>
-                        <form className={styles.form} onSubmit={(e) => e.preventDefault()}>
+                        <form className={styles.form} onSubmit={handleSubmit}>
                             <h3 className={styles.formTitle}>Send us a message</h3>
                             <div className={styles.inputGroup}>
-                                <label>Name</label>
-                                <input type="text" placeholder="Your Name" className={styles.input} />
+                                <label htmlFor="name">Name</label>
+                                <input
+                                    type="text"
+                                    name="name"
+                                    id="name"
+                                    placeholder="Your Name"
+                                    className={styles.input}
+                                    value={formData.name}
+                                    onChange={handleChange}
+                                    required
+                                />
                             </div>
                             <div className={styles.inputGroup}>
-                                <label>Email</label>
-                                <input type="email" placeholder="your@email.com" className={styles.input} />
+                                <label htmlFor="email">Email</label>
+                                <input
+                                    type="email"
+                                    name="email"
+                                    id="email"
+                                    placeholder="your@email.com"
+                                    className={styles.input}
+                                    value={formData.email}
+                                    onChange={handleChange}
+                                    required
+                                />
                             </div>
                             <div className={styles.inputGroup}>
-                                <label>Message</label>
-                                <textarea rows="4" placeholder="How can we help?" className={styles.textarea}></textarea>
+                                <label htmlFor="message">Message</label>
+                                <textarea
+                                    name="message"
+                                    id="message"
+                                    rows="4"
+                                    placeholder="How can we help?"
+                                    className={styles.textarea}
+                                    value={formData.message}
+                                    onChange={handleChange}
+                                    required
+                                ></textarea>
                             </div>
-                            <button className={styles.submitBtn}>Send Message</button>
+                            <button className={styles.submitBtn} disabled={status === 'sending'}>
+                                {status === 'sending' ? (
+                                    <>Sending... <Spinner className={styles.spin} /></>
+                                ) : status === 'success' ? (
+                                    'Message Sent!'
+                                ) : (
+                                    <>Send Message <PaperPlaneRight weight="fill" /></>
+                                )}
+                            </button>
+                            {status === 'error' && (
+                                <p className={styles.errorMsg}>Something went wrong. Please try again or use WhatsApp.</p>
+                            )}
                         </form>
                     </div>
                 </div>
