@@ -10,7 +10,7 @@ const Navbar = () => {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const { theme, toggleTheme } = useTheme();
     const location = useLocation();
-    const isHome = location.pathname === '/';
+    const isTransparentPage = location.pathname === '/' || location.pathname === '/expansion';
 
     useEffect(() => {
         const handleScroll = () => {
@@ -29,7 +29,7 @@ const Navbar = () => {
     ];
 
     return (
-        <nav className={`${styles.navbar} ${scrolled ? styles.scrolled : ''} ${isHome ? styles.onHome : ''}`}>
+        <nav className={`${styles.navbar} ${scrolled ? styles.scrolled : ''} ${isTransparentPage ? styles.onHome : ''}`}>
             <div className={styles.container}>
                 <NavLink to="/" className={styles.logoContainer}>
                     <img src={logo} alt="ToshineLight" className={styles.logo} />

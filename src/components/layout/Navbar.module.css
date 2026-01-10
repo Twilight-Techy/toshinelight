@@ -158,8 +158,16 @@
     color: var(--color-text-main);
 }
 
+.onHome:not(.scrolled) .mobileToggle {
+    color: white;
+}
+
 .mobileThemeToggle {
     color: var(--color-text-main);
+}
+
+.onHome:not(.scrolled) .mobileThemeToggle {
+    color: white;
 }
 
 

@@ -36,7 +36,7 @@ const CurrentServices = () => {
                         <div className={styles.iconWrapper}>
                             <Gear size={40} weight="fill" />
                         </div>
-                        <h3 className={styles.cardTitle}>ToshineLight Genuine Spare Parts</h3>
+                        <h3 className={styles.cardTitle}>Genuine Spare Parts</h3>
                         <p className={styles.cardDesc}>
                             High-quality automotive spare parts and accessories designed to meet recognized automotive quality and performance standards.
                         </p>
