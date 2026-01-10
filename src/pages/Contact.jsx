@@ -93,6 +93,7 @@ const Contact = () => {
                                     className={styles.input}
                                     value={formData.name}
                                     onChange={handleChange}
+                                    autoComplete="name"
                                     required
                                 />
                             </div>
@@ -106,6 +107,7 @@ const Contact = () => {
                                     className={styles.input}
                                     value={formData.email}
                                     onChange={handleChange}
+                                    autoComplete="email"
                                     required
                                 />
                             </div>
