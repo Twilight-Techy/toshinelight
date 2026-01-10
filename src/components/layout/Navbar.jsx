@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import { List, X, Sun, Moon } from 'phosphor-react';
 import styles from './Navbar.module.css';
 import logo from '../../assets/logo.png';
@@ -9,6 +9,8 @@ const Navbar = () => {
     const [scrolled, setScrolled] = useState(false);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const { theme, toggleTheme } = useTheme();
+    const location = useLocation();
+    const isHome = location.pathname === '/';
 
     useEffect(() => {
         const handleScroll = () => {
@@ -27,7 +29,7 @@ const Navbar = () => {
     ];
 
     return (
-        <nav className={`${styles.navbar} ${scrolled ? styles.scrolled : ''}`}>
+        <nav className={`${styles.navbar} ${scrolled ? styles.scrolled : ''} ${isHome ? styles.onHome : ''}`}>
             <div className={styles.container}>
                 <NavLink to="/" className={styles.logoContainer}>
                     <img src={logo} alt="ToshineLight" className={styles.logo} />

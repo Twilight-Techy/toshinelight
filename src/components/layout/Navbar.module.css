@@ -59,6 +59,10 @@
     color: var(--color-text-main);
 }
 
+.onHome:not(.scrolled) .brandName {
+    color: white;
+}
+
 .desktopMenu {
     display: none;
     gap: var(--spacing-md);
@@ -95,6 +99,14 @@
     color: var(--color-primary);
 }
 
+.onHome:not(.scrolled) .navLink {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.onHome:not(.scrolled) .navLink:hover {
+    color: white;
+}
+
 .navLink:hover::after {
     width: 100%;
 }
@@ -118,6 +130,14 @@
 
 .themeToggle:hover {
     color: var(--color-primary);
+}
+
+.onHome:not(.scrolled) .themeToggle {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.onHome:not(.scrolled) .themeToggle:hover {
+    color: white;
 }
 
 /* Mobile */

@@ -4,7 +4,8 @@
 
 .hero {
     background: var(--color-metallic-dark);
-    color: white;
+    color: #FFFFFF;
+    /* Force white text */
     padding: var(--spacing-lg) var(--spacing-sm);
     text-align: center;
 }
@@ -12,6 +13,8 @@
 .title {
     font-size: 3rem;
     margin-bottom: var(--spacing-xs);
+    color: #FFFFFF;
+    /* Override global h1 color */
 }
 
 .subtitle {
